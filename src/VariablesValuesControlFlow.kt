@@ -1,4 +1,8 @@
-
+/*
+Topics covered here:
+Variables and values,
+if, else, when,
+ */
 
 
 /*
@@ -47,7 +51,7 @@ fun main(){
     var greeting: String? = null
     if (greeting != null){
         println("Greeting is not null.")
-    } else if(greeting == null){
+    } else if (greeting == null){
         println("Greeting is null: $greeting")
     }
 
@@ -69,7 +73,16 @@ fun main(){
     Kotlin can use control flow to assign variables.
     */
     greeting = "Not null"
-    val greetingToPrint = if(greeting == null) greeting else "Hi" // greeting is not null, so it will assign "Hi" to greetingToPrint
+    var greetingToPrint = if (greeting == null) greeting else "Hi" // greeting is not null, so it will assign "Hi" to greetingToPrint
+    println(greetingToPrint)
+
+    /*
+    Using when statement to assign variables.
+    */
+    greetingToPrint = when (greeting) { // passing in greeting to the when method.
+        null -> "Greeting is null." // if greeting is null, then this will be assigned to greetingToPrint.
+        else -> "Greeting is not null." // if greeting is not null, then this will be assigned to greetingToPrint.
+    }
     println(greetingToPrint)
 
 }
