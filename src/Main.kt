@@ -9,7 +9,7 @@ var topLevelVariableExample: String = "This is a top level variable. It is not c
 /*
 In Kotlin, data types are non-nullable by default. To make a variable nullable, it must have a ? after the data type.
 */
-var notNullable: String = "Can't be null"
+var notNullable: String = "can't be null"
 var nullable: String? = null // the ? allows the value to be null
 
 fun main(){
@@ -36,4 +36,40 @@ fun main(){
     println(topLevelVariableExample)
     topLevelVariableExample = "The top level variable has been changed." // The top level variable can be reassigned, because it is a var.
     println(topLevelVariableExample)
+
+    println("If a the datatype doesn't have a ? after it, then " + notNullable)
+    println("var nullable: String? = " + nullable)
+
+    /*
+    Control flow
+    Kotlin has if and then statements like in Java.
+    */
+    var greeting: String? = null
+    if (greeting != null){
+        println("Greeting is not null.")
+    } else if(greeting == null){
+        println("Greeting is null: $greeting")
+    }
+
+    /*
+    When statements are similar to switch statements in Java.
+    */
+    when (greeting) {
+        null -> println("Greeting is null.")
+        else -> println(greeting)
+    }
+
+    greeting = "Not null anymore"
+    when (greeting) {
+        null -> println("Greeting is null.")
+        else -> println(greeting)
+    }
+
+    /*
+    Kotlin can use control flow to assign variables.
+    */
+    greeting = "Not null"
+    val greetingToPrint = if(greeting == null) greeting else "Hi" // greeting is not null, so it will assign "Hi" to greetingToPrint
+    println(greetingToPrint)
+
 }
