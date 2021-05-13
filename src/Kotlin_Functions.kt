@@ -1,5 +1,5 @@
 /*
-2
+#2
 Topics covered here:
 Functions
  */
