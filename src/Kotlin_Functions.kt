@@ -1,4 +1,5 @@
 /*
+2
 Topics covered here:
 Functions
  */
