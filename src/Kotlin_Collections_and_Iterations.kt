@@ -8,6 +8,13 @@ Kotlin differentiates between mutable and immutable collection types,
 this is similar to how Kotlin differentiates between null and non-null values.
  */
 
+
+fun helloFunction(hello:String, items:List<String>) {
+    items.forEach { items ->
+        println("$hello $items")
+    }
+}
+
 fun main(){
 
     val stuffArray = arrayOf("Stuffs", "Things", "Even more stuffs")
@@ -57,4 +64,10 @@ fun main(){
     mutableList.forEach{mutableList -> print("$mutableList ")}
     println("\n----------------")
 
+    println("----------------")
+    println("-Function List--")
+    helloFunction("Hello", list)
+    println("----------------")
 }
+
+
