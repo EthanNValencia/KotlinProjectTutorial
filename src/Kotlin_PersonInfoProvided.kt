@@ -24,7 +24,8 @@ interface SessionInfoProvider{
 }
 
 // abstract class will allow me to implement an interface without having to use all it's functions.
-class BasicInfoProvider : Kotlin_PersonInfoProvided, SessionInfoProvider { // this class implements an interface
+// the open keyword allows this class to be extended.
+open class BasicInfoProvider : Kotlin_PersonInfoProvided, SessionInfoProvider { // this class implements an interface
 
     override val providerInfo:String
         get() = "Basic Information"
@@ -52,7 +53,10 @@ fun checkType(infoProvider: Kotlin_PersonInfoProvided){
 
 fun main(){
     val provider = BasicInfoProvider()
+    val fancyInProvider = FancyInfoProvider()
 
+    println(fancyInProvider.providerInfo)
+    fancyInProvider.printInfo(Person())
     provider.printInfo(Person())
     println(provider.getSessionId())
 
