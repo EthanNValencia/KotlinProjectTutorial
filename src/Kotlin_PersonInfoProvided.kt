@@ -1,0 +1,3 @@
+interface Kotlin_PersonInfoProvided {
+    
+}

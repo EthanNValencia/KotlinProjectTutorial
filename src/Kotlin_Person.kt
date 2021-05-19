@@ -8,6 +8,12 @@ If there are no properties defined in your primary constructor, then is okay to 
 
 
 
+// public class - default setting
+// internal class - public within the module itself
+// private class - makes the class only available within the file it is implemented in
+
+// protected var/val is only available within the class or sub-classes
+// private var/val is only available within the file it is implemented in
 
 class Person (val first_Name:String = "Default_FN", val last_Name:String = "Default_LN") { // two parameters that are required for a person class
 
