@@ -27,6 +27,8 @@ interface SessionInfoProvider{
 // the open keyword allows this class to be extended.
 open class BasicInfoProvider : Kotlin_PersonInfoProvided, SessionInfoProvider { // this class implements an interface
 
+    protected open val sessionIdPrefix = "Session99"
+
     override val providerInfo:String
         get() = "Basic Information"
 
@@ -35,7 +37,7 @@ open class BasicInfoProvider : Kotlin_PersonInfoProvided, SessionInfoProvider { 
     //}
 
     override fun getSessionId(): String {
-        return "Session101"
+        return sessionIdPrefix
     }
 }
 /*
@@ -54,6 +56,17 @@ fun checkType(infoProvider: Kotlin_PersonInfoProvided){
 fun main(){
     val provider = BasicInfoProvider()
     val fancyInProvider = FancyInfoProvider()
+
+    val anonymous_inner_class_Provider = object: Kotlin_PersonInfoProvided { // this is how I can declare an anonymous inner class.
+        override val providerInfo: String
+            get() = "New Info Provider"
+
+        fun getSessionId() = "Anonymous inner class id"
+    }
+
+    println(anonymous_inner_class_Provider.getSessionId())
+
+    println(fancyInProvider.getSessionId())
 
     println(fancyInProvider.providerInfo)
     fancyInProvider.printInfo(Person())

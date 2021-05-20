@@ -1,5 +1,5 @@
 /*
-#6
+#7
 Topics covered here:
 Inheritance
 
@@ -10,6 +10,10 @@ class Kotlin_Inheritance {
 }
 
 class FancyInfoProvider: BasicInfoProvider(){
+
+    override val sessionIdPrefix: String
+        get() = "Fancy session"
+
     override val providerInfo: String
         get() = "FancyInfoProvider"
 
