@@ -3,7 +3,7 @@ import java.util.*
 /*
 #9
 Topics covered here:
-Object Declaration, enum classes,
+Object Declaration, enum classes
 
 */
 
@@ -35,6 +35,10 @@ class Entity_OD constructor(val id: String, val name: String) {
 }
 
 fun main(){
-    val entityMed = Entity_Factory_OD.create(Entity_Type_OD.EASY)
-    println(entityMed)
+    val entityEasy = Entity_Factory_OD.create(Entity_Type_OD.EASY)
+    val entityMed = Entity_Factory_OD.create(Entity_Type_OD.MEDIUM)
+    val entityHard = Entity_Factory_OD.create(Entity_Type_OD.HARD)
+
+    println(entityEasy)
+    println(entityHard)
 }

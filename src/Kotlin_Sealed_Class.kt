@@ -3,7 +3,7 @@ import java.util.*
 /*
 #10
 Topics covered here:
-Sealed Class
+Sealed Class, data classes, comparing data classes
 
 */
 
@@ -46,6 +46,19 @@ sealed class Entity_SC () {
     data class Hard(val id: String, val name: String, val multiplier: Float) : Entity_SC()
 }
 
+/*
+This is a function for the data class Medium, but it is not actually within the Medium declaration body.
+This is kind of an easy way to add functions without having them inside the data class body.
+*/
+fun Entity_SC.Medium.printInfo(){
+    println("Medium class: $id")
+}
+/*
+This is similar to the above function, but it is basically a standard getter function.
+*/
+val Entity_SC.Medium.info: String
+    get() = "some info"
+
 fun main(){
     val entity: Entity_SC = Entity_Factory_SC.create(Entity_Type_SC.EASY)
     val msg = when (entity) {
@@ -55,4 +68,72 @@ fun main(){
         is Entity_SC.Hard -> "Hard class"
     }
     println(msg)
+
+
+    val entityEasy1 = Entity_Factory_OD.create(Entity_Type_OD.EASY)
+    val entityEasy2 = Entity_Factory_OD.create(Entity_Type_OD.EASY)
+
+    /*
+    entityEasy1 and entityEasy2 are not actually equal.
+    */
+    if (entityEasy1 == entityEasy2){
+        println("Equal")
+    } else if (entityEasy1 != entityEasy2){
+        println("They are not equal.")
+    }
+
+
+    /*
+    These entities are actually data types. Now we are comparing data to other data.
+    */
+    val entity1 = Entity_SC.Easy("id", "name")
+    val entity2 = Entity_SC.Easy("id", "name")
+
+    if (entity1 == entity2){
+        println("Equal")
+    } else if (entity1 != entity2){
+        println("They are not equal.")
+    }
+
+    /*
+    Here I am copying the data from entity1 to entity3, but I am re-assigning the name to "other".
+    This is very useful for copying and making changes to copied data.
+    */
+    val entity3 = entity1.copy(name = "other")
+    println(entity3)
+
+    if (entity1 == entity3){
+        println("Equal")
+    } else if (entity1 != entity3){
+        println("They are not equal.") // they will not be equal.
+    }
+
+    /*
+    Referential comparison
+    The three === allows for referential id object comparisons. Is the object the same object?
+    */
+    if (entity1 === entity2){ // same data, but different objects
+        println("They are the same entity.")
+    } else {
+        println("They are not the same entity.")
+    }
+    if (entity1 === entity1){ // same objects
+        println("They are the same entity.")
+    } else {
+        println("They are not the same entity.")
+    }
+
+    Entity_SC.Medium("id", "name").printInfo() // This is calling the printInfo() function.
+
+
+    /*
+    This is using smart casting. If an object is a Medium, then it will have access to the
+    properties that the Medium will have. If it is not a Medium object, then the program will
+    still run, because the Medium function (printInfo()) will never be called.
+    */
+    val entity_Med_1 = Entity_Factory_SC.create(Entity_Type_SC.MEDIUM)
+    if(entity_Med_1 is Entity_SC.Medium){
+        entity_Med_1.printInfo()
+    }
+
 }
